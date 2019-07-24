@@ -1,0 +1,9 @@
+export const FETCH_PRODUCTS_REQUEST = 'product/FETCH_PRODUCTS_REQUEST';
+export const FETCH_PRODUCTS_SUCCESS = 'product/FETCH_PRODUCTS_SUCCESS';
+export const FETCH_PRODUCTS_FAILURE = 'product/FETCH_PRODUCTS_FAILURE';
+
+export const SEARCH_REQUEST = 'product/SEARCH_REQUEST';
+export const SET_CURRENT_PRODUCTS = 'product/SET_CURRENT_PRODUCT';
+
+export const CLEAR_PRODUCTS = 'product/CLEAR_PRODUCTS';
+export const SET_LOADING = 'product/SET_LOADING';
