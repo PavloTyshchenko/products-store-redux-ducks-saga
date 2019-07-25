@@ -10,7 +10,8 @@ const Products = (props) => {
 
     const {
         products,
-        currentProducts,
+        category,
+        search_term,
         loading,
         showClear
     } = props;
@@ -23,10 +24,10 @@ const Products = (props) => {
         );
     };
 
-    let items = null;
-    showClear ? items = currentProducts : items = products; 
+    let items = products;
+    items = filterProducts(category, search_term, products);
 
-    if (showClear && currentProducts.length === 0 && !loading) {
+    if (showClear && items.length === 0 && !loading) {
         return (
             <Alert variant='secondary'>
                 Unfortunately no matches ...
@@ -47,11 +48,35 @@ const Products = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.product.products,
-        currentProducts: state.product.currentProducts,
-        loading: state.product.loading,
-        showClear: state.product.showClear
+        products: state.products.products,
+        category: state.products.category,
+        search_term: state.products.search_term,
+        loading: state.products.loading,
+        showClear: state.products.showClear
     };
 };
 
 export default connect(mapStateToProps)(Products);
+
+
+export const filterProducts = (category, search_term, products) => {
+
+    let filtered = [];
+
+    if (category !== 'All') {
+        filtered = products
+            .filter((product) => {
+                return product.bsr_category.toLowerCase().indexOf(category.toLowerCase()) > -1
+            });
+    } else {
+        filtered = products;
+    }
+
+    if (search_term) {
+        filtered = filtered.filter((product) => {
+            return product.name.toLowerCase().indexOf(search_term.toLowerCase()) > -1
+        });
+    };
+
+    return filtered;
+};

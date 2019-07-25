@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 
-import { productActions } from '../../../state/product';
+import * as productDuck from '../../../ducks/products';
 
 const Search = (props) => {
 
@@ -13,7 +13,7 @@ const Search = (props) => {
         history,
         match,
         category,
-        searchRequest
+        searchProducts
     } = props;
 
     // add same search term in field if there is param in url
@@ -32,7 +32,7 @@ const Search = (props) => {
 
         if (text !== '') {
             history.push(`/products/${category}/${text}`);
-            searchRequest(category, text);
+            searchProducts(category, text);
         }
     };
 
@@ -51,14 +51,14 @@ const Search = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        category: state.product.category,
+        category: state.products.category,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        searchRequest: (category, search_term) => {
-            dispatch(productActions.searchRequest(category, search_term));
+        searchProducts: (category, search_term) => {
+            dispatch(productDuck.searchProducts(category, search_term));
         }
     };
 };

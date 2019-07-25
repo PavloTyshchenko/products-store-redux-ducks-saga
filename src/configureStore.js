@@ -1,19 +1,18 @@
 import {
     createStore,
     applyMiddleware,
+    combineReducers
 } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import * as reducers from './ducks/products';
 
-import rootSaga from './sagas';
-import rootReducer from './state';
 
-const sagaMiddleware = createSagaMiddleware()
+const rootReducer = combineReducers({ products: reducers.default});
 
-const store = createStore(
-    rootReducer,
-    applyMiddleware(sagaMiddleware)
-);
+const sagaMiddleware = createSagaMiddleware();
 
-sagaMiddleware.run(rootSaga)
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(reducers.watchProductsActions);
 
 export default store;

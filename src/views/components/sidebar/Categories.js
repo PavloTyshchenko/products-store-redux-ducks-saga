@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { ListGroup } from 'react-bootstrap';
 
-import { productActions } from '../../../state/product';
+import * as productDuck from '../../../ducks/products';
 
 import './Categories.css';
 
@@ -14,7 +14,7 @@ const Categories = (props) => {
         categories,
         category,
         search_term,
-        searchRequest
+        searchProducts
      } = props;
 
     const items = categories.map((item, key) => {
@@ -36,7 +36,7 @@ const Categories = (props) => {
         } else {
             history.push(`/products/${item}`);
         }
-        searchRequest(item, '');
+        searchProducts(item, '');
     };
 
     return (
@@ -48,16 +48,16 @@ const Categories = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        categories: state.product.categories,
-        category: state.product.category,
-        search_term: state.product.search_term
+        categories: state.products.categories,
+        category: state.products.category,
+        search_term: state.products.search_term
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        searchRequest: (category, search_term) => {
-            dispatch(productActions.searchRequest(category, search_term));
+        searchProducts: (category, search_term) => {
+            dispatch(productDuck.searchProducts(category, search_term));
         }
     };
 };

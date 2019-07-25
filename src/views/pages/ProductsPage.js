@@ -6,13 +6,13 @@ import { Row, Col } from 'react-bootstrap';
 import Sidebar from '../components/sidebar/Sidebar';
 import Products from '../components/products/Products';
 
-import { productActions } from '../../state/product';
+import * as productDuck from '../../ducks/products';
 
 const ProductsPage = (props) => {
 
     const {
         getProducts,
-        searchRequest,
+        searchProducts,
         showClear,
         clearProducts
     } = props;
@@ -21,12 +21,14 @@ const ProductsPage = (props) => {
 
     useEffect(() => {
 
+        // check with params category and term - if they are - dispatch action
+
         if (category && !term) {
-            searchRequest(category, undefined);
+            searchProducts(category, undefined);
         };
 
         if (category && term) {
-            searchRequest(category, term);
+            searchProducts(category, term);
         };
 
         getProducts();
@@ -55,20 +57,20 @@ const ProductsPage = (props) => {
 
 function mapStateToProps(state) {
     return {
-        showClear: state.product.showClear
+        showClear: state.products.showClear
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getProducts: () => {
-            dispatch(productActions.productsRequested());
+            dispatch(productDuck.productsRequested());
         },
         clearProducts: () => {
-            dispatch(productActions.clearProducts());
+            dispatch(productDuck.clearProducts());
         },
-        searchRequest: (category, search_term) => {
-            dispatch(productActions.searchRequest(category, search_term));
+        searchProducts: (category, search_term) => {
+            dispatch(productDuck.searchProducts(category, search_term));
         }
     };
 };
