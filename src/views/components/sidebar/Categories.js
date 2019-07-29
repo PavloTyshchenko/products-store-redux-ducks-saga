@@ -7,7 +7,7 @@ import * as productDuck from '../../../ducks/products';
 
 import './Categories.css';
 
-const Categories = (props) => {
+export const Categories = (props) => {
 
     const { 
         history,
@@ -40,7 +40,7 @@ const Categories = (props) => {
     };
 
     return (
-        <ListGroup as="ul" className="mb-3">
+        <ListGroup as="ul" className="mb-3" data-test="categoriesComponent">
             {items}
         </ListGroup>
     );

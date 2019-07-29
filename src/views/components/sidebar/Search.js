@@ -5,7 +5,7 @@ import { Form } from 'react-bootstrap';
 
 import * as productDuck from '../../../ducks/products';
 
-const Search = (props) => {
+export const Search = (props) => {
 
     const [text, setText] = useState('');
 
@@ -37,9 +37,9 @@ const Search = (props) => {
     };
 
     return (
-        <Form onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit} data-test="searchComponent">
             <Form.Group>
-                <Form.Control
+                <Form.Control data-test="search-input"
                     type="text"
                     onChange={onChange}
                     value={text}

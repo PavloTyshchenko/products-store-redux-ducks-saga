@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories Component Should match snapshot 1`] = `
+"<ForwardRef as=\\"ul\\" className=\\"mb-3\\" data-test=\\"categoriesComponent\\">
+  <Bootstrap(ListGroupItem) active={true} as=\\"li\\" onClick={[Function: onClick]}>
+    All
+  </Bootstrap(ListGroupItem)>
+</ForwardRef>"
+`;

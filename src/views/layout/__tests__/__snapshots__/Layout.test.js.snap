@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout Component Should match snapshot 1`] = `
+"<Container data-test=\\"container\\" fluid={false}>
+  <NavigationBar data-test=\\"navBar\\" />
+</Container>"
+`;

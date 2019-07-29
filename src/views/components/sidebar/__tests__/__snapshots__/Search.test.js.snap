@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Component Should match snapshot 1`] = `
+"<Form onSubmit={[Function: onSubmit]} data-test=\\"searchComponent\\" inline={false}>
+  <FormGroup>
+    <FormControl data-test=\\"search-input\\" type=\\"text\\" onChange={[Function: onChange]} value=\\"\\" placeholder=\\"Search Products...\\" />
+  </FormGroup>
+</Form>"
+`;

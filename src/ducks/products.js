@@ -1,10 +1,11 @@
 import {
     put,
+    call,
     all,
     takeEvery,
 } from 'redux-saga/effects';
 
-import axios from 'axios';
+import api from '../api';
 
 // --------------------- Action types ----------------
 const FETCH_PRODUCTS_REQUEST = 'product/FETCH_PRODUCTS_REQUEST';
@@ -66,7 +67,7 @@ const initialState = {
     category: 'All',
 
     showClear: false,
-    loading: true,
+    loading: false,
     error: null
 };
 
@@ -81,7 +82,7 @@ export default function reducer(state = initialState, action = {}) {
         case FETCH_PRODUCTS_SUCCESS:
             return {
                 ...state,
-                products: action.payload,
+                products: action.payload !== undefined ? action.payload : [],
                 categories: formCategories(action.payload),
                 loading: false
             };
@@ -119,21 +120,22 @@ export default function reducer(state = initialState, action = {}) {
 };
 
 // --------------------- Saga ---------------------
-export function* getProducts() {
-    put(setLoading);
+export function* getProductsSaga() {
 
-    try {
-        const response = yield axios.get('/products.json');
+    yield put(setLoading());
+
+    const response = yield call(api.fetchProducts);
+    if (response.statusText === "OK") {
         yield put(productsLoaded(response.data.products));
-    } catch (e) {
-        yield put(productsFailure(e));
+    } else {
+        yield put(productsFailure());
     }
 };
 
 
 export function* watchProductsActions() {
     yield all([
-        takeEvery(FETCH_PRODUCTS_REQUEST, getProducts),
+        takeEvery(FETCH_PRODUCTS_REQUEST, getProductsSaga)
     ])
 };
 
@@ -143,13 +145,17 @@ export function* watchProductsActions() {
 
 // Forming array of categories from array of products
 const formCategories = (products) => {
-    const arr = [];
-    arr.push("All"); // Initial category "ALL", not presented in json data.
 
-    products.forEach((product) => {
-        if (arr.indexOf(product.bsr_category) === -1)
-            arr.push(product.bsr_category);
-    });
+    const arr = [];
+
+    if (products) {
+        arr.push("All"); // Initial category "ALL", not presented in json data.
+
+        products.forEach((product) => {
+            if (arr.indexOf(product.bsr_category) === -1)
+                arr.push(product.bsr_category);
+        });
+    }
 
     return arr;
 };

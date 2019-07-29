@@ -6,7 +6,7 @@ import { CardColumns, Alert, Container } from 'react-bootstrap';
 import ProductItem from './ProductItem';
 import Spinner from '../spinner/Spinner';
 
-const Products = (props) => {
+export const Products = (props) => {
 
     const {
         products,
@@ -19,24 +19,25 @@ const Products = (props) => {
     if (loading) {
         return (
             <Container className="text-center">
-                <Spinner />
+                <Spinner data-test="spinner"/>
             </Container>
         );
     };
 
     let items = products;
     items = filterProducts(category, search_term, products);
-
+    
     if (showClear && items.length === 0 && !loading) {
         return (
-            <Alert variant='secondary'>
+            <Alert variant='secondary' data-test="alert">
                 Unfortunately no matches ...
             </Alert>
         );
     };
 
+    
     return (
-        <CardColumns className="mb-3">
+        <CardColumns className="mb-3" data-test="productsComponent">
             {
                 items.map((product) => {
                     return <ProductItem key={product.name} product={product} />
@@ -59,6 +60,7 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps)(Products);
 
 
+// ----------------- UTIL -----------------------
 export const filterProducts = (category, search_term, products) => {
 
     let filtered = [];

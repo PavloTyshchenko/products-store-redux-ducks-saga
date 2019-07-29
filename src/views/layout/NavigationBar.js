@@ -1,23 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from "react-router-bootstrap";
 
 const NavigationBar = () => {
 
     return (
         <Navbar bg="primary" variant="dark" className="mb-3">
-            <Navbar.Brand href="#home">Products Store</Navbar.Brand>
-
+            <LinkContainer to="/">
+                <Navbar.Brand>Navbar</Navbar.Brand>
+            </LinkContainer>
             <Nav className="mr-auto">
-
-                {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
+                <Nav.Link as={Link} to='/'>Home</Nav.Link>
+                <Nav.Link as={Link} to='/products/All'>Products</Nav.Link>
+                <Nav.Link as={Link} to='/about'>About</Nav.Link>
             </Nav>
-            <Link style={{ color: "white", marginRight: "1rem"}} to="/">Home</Link>
-            <Link style={{ color: "white", marginRight: "1rem"}} to="/products/All">Products</Link>
-            <Link style={{ color: "white", marginRight: "1rem"}} to="/about">About</Link>
 
         </Navbar>
-    )
+    );
 };
 
 export default NavigationBar;

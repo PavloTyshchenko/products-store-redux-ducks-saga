@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductItem Component Should match snapshot 1`] = `
+"<Card data-test=\\"productItemCard\\" body={false}>
+  <CardImg variant=\\"top\\" src=\\"test\\" />
+  <CardBody>
+    <CardTitle>
+      <a href=\\"test\\">
+        test
+      </a>
+    </CardTitle>
+    <CardText>
+      Price: 
+      16
+       (
+      gbp
+      )
+    </CardText>
+  </CardBody>
+</Card>"
+`;

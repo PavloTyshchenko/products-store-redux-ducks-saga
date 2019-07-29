@@ -8,7 +8,7 @@ import Products from '../components/products/Products';
 
 import * as productDuck from '../../ducks/products';
 
-const ProductsPage = (props) => {
+export const ProductsPage = (props) => {
 
     const {
         getProducts,
@@ -21,8 +21,9 @@ const ProductsPage = (props) => {
 
     useEffect(() => {
 
-        // check with params category and term - if they are - dispatch action
+        getProducts();
 
+        // check with params category and term - if they are - dispatch action
         if (category && !term) {
             searchProducts(category, undefined);
         };
@@ -30,8 +31,6 @@ const ProductsPage = (props) => {
         if (category && term) {
             searchProducts(category, term);
         };
-
-        getProducts();
 
         // eslint-disable-next-line
     }, []);
@@ -43,7 +42,7 @@ const ProductsPage = (props) => {
     }
 
     return (
-        <Row>
+        <Row data-test="productsPage">
             <Col md={3}>
                 <Sidebar showClear={showClear} clearProducts={clearProductsHandler} />
             </Col>

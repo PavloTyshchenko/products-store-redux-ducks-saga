@@ -5,8 +5,8 @@ import NavigationBar from './NavigationBar';
 
 const Layout = props => {
     return (
-        <Container>
-            <NavigationBar />
+        <Container data-test="container">
+            <NavigationBar data-test="navBar"/>
             {props.children}
         </Container>
     );

@@ -5,7 +5,7 @@ import { Card } from 'react-bootstrap';
 const ProductItem = ({ product: { img, name, price, currency, link } }) => {
 
     return (
-        <Card>
+        <Card data-test="productItemCard">
             <Card.Img variant="top" src={img} />
             <Card.Body>
                 <Card.Title>

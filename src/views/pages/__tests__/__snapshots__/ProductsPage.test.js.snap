@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TEST Products page Should match snapshot 1`] = `
+"<Bootstrap(Row) data-test=\\"productsPage\\">
+  <Col md={3}>
+    <Sidebar showClear={false} clearProducts={[Function: clearProductsHandler]} />
+  </Col>
+  <Col md={9}>
+    <Connect(Products) />
+  </Col>
+</Bootstrap(Row)>"
+`;

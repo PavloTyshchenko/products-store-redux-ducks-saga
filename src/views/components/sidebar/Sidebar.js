@@ -6,15 +6,15 @@ import { Button, ListGroup } from 'react-bootstrap';
 import Search from './Search';
 import Categories from './Categories';
 
-const Sidebar = ({ showClear, clearProducts }) => {
+export const Sidebar = ({ showClear, clearProducts }) => {
 
     return (
-        <ListGroup>
-            <Search />
-            <Categories />
+        <ListGroup data-test="sidebarComponent">
+            <Search data-test="searchInput"/>
+            <Categories data-test="categories"/>
             {
                 showClear &&
-                <Button
+                <Button data-test="clearButton"
                     variant="light"
                     className="mb-3"
                     onClick={clearProducts}>
@@ -32,6 +32,7 @@ Sidebar.propTypes = {
 
 Sidebar.defaultProps = {
     showClear: false,
+    clearProducts: () => {}
 };
 
 export default Sidebar;

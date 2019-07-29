@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationBar Component Should match snapshot 1`] = `
+"<Bootstrap(undefined) bg=\\"primary\\" variant=\\"dark\\" className=\\"mb-3\\">
+  <withRouter(LinkContainer) to=\\"/\\">
+    <NavbarBrand>
+      Navbar
+    </NavbarBrand>
+  </withRouter(LinkContainer)>
+  <Nav className=\\"mr-auto\\" justify={false} fill={false}>
+    <NavLink as={[Function: Link]} to=\\"/\\" disabled={false}>
+      Home
+    </NavLink>
+    <NavLink as={[Function: Link]} to=\\"/products/All\\" disabled={false}>
+      Products
+    </NavLink>
+    <NavLink as={[Function: Link]} to=\\"/about\\" disabled={false}>
+      About
+    </NavLink>
+  </Nav>
+</Bootstrap(undefined)>"
+`;

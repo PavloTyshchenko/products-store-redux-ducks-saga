@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar Component Should match snapshot 1`] = `
+"<ForwardRef data-test=\\"sidebarComponent\\">
+  <withRouter(Connect(Search)) data-test=\\"searchInput\\" />
+  <withRouter(Connect(Categories)) data-test=\\"categories\\" />
+</ForwardRef>"
+`;

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Products Component Should match snapshot 1`] = `
+"<CardColumns className=\\"mb-3\\" data-test=\\"productsComponent\\">
+  <ProductItem product={{...}} />
+  <ProductItem product={{...}} />
+</CardColumns>"
+`;

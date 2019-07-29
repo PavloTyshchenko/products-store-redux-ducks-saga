@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutPage Component Should match snapshot 1`] = `
+"<Bootstrap(Jumbotron)>
+  <h1>
+    About
+  </h1>
+  <p>
+    This is a simple react application to test myself, practice skills and obtain some new knowledge
+  </p>
+  <p>
+    <Button variant=\\"primary\\" active={false} disabled={false} type=\\"button\\">
+      Learn more
+    </Button>
+  </p>
+</Bootstrap(Jumbotron)>"
+`;
